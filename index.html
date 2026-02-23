@@ -38,7 +38,6 @@
     </header>
     <main>
 
- 
         <section class="flex justify-between mt-7.5 mb-5">
             <h3 class="text-[#002C5C] font-semibold text-2xl">Available Jobs</h3>
             <div id="job-count">
@@ -58,8 +57,6 @@
 </div>
     </div>
 </section>
-
-
 
 
 
@@ -310,11 +307,9 @@
         </section>
 
 
-
-
         <section id="empty" class="hidden">
-        </section>
-    <!-- </main>
+        </section> 
+     </main>
     <script>
 let interviewList = [];
 let rejectedList = [];
@@ -484,9 +479,7 @@ maincontainer.addEventListener('click', function (event) {
     }
 
 
-
-
-    <!-- else if (event.target.classList.contains('reject-btn')) {
+     else if (event.target.classList.contains('reject-btn')) {
         const parentNode = event.target.parentNode.parentNode;
         const companyName = parentNode.querySelector('.companyName').innerText;
         const position = parentNode.querySelector('.position').innerText;
@@ -528,14 +521,9 @@ maincontainer.addEventListener('click', function (event) {
             }
         }
     }
-}); -->
+});
 
-
-
-
-
-
-<!-- const filterSection = document.getElementById("filtered-section");
+ const filterSection = document.getElementById("filtered-section");
 function renderInterviewList() {
     filterSection.innerHTML = '';
     for (let inter of interviewList) {
@@ -607,6 +595,6 @@ function renderRejectedList() {
         filterSection.appendChild(div);
     }
 }
-    </script> -->
+    </script>
 </body>
 </html>
