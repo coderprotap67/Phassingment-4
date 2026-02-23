@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" crossorigin>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="max-sm:px-2 w-3/4  min-h-screen mx-auto px-20 bg-[#F8FAFC]">
+    <header>
+        <section class=" border-b-2 border-neutral-content pb-7.5">
+            <h3 class="text-3xl font-bold pt-15 mb-4 text-[#002C5C] ">Job Application Tracker</h3>
+            <div class="flex justify-between gap-4">
+                <div class="card w-1/3 bg-base-100 card-xs shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Total</h2>
+                        <p id="total" class="text-2xl text-[#002C5C] font-bold">0</p>
+                    </div>
+                </div>
+                <div class="card w-1/3 bg-base-100 card-xs shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Interview</h2>
+                        <p id="interview" class="text-[#10B981] text-2xl font-bold">0</p>
+                    </div>
+                </div>
+                <div class="card w-1/3 bg-base-100 card-xs shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Rejected</h2>
+                        <p id="rejected" class="text-[#EF4444] text-2xl font-bold">0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main>
+
+
+<!-- 
+        <section class="flex justify-between mt-7.5 mb-5">
+            <h3 class="text-[#002C5C] font-semibold text-2xl">Available Jobs</h3>
+            <div id="job-count">
+            </div>
+        </section>
+        <section class="mb-5">
+    <div class="flex gap-2">
+        <div class="flex gap-2">
+            <button onclick="toggleStyle('all-btn')" id="all-btn"
+                class="btn focus:bg-[#3B82F6] focus:text-white flex-1">All</button>
+
+            <button onclick="toggleStyle('interview-btn')" id="interview-btn"
+                class="btn focus:bg-[#3B82F6] focus:text-white flex-1">Interview</button>
+                
+             <button onclick="toggleStyle('rejected-btn')" id="rejected-btn"
+        class="btn focus:bg-[#3B82F6] focus:text-white flex-1">Rejected</button>
+</div>
+    </div>
+</section> -->
+
+
+
+
+
+<!-- 
+        <section id="filtered-section" class="hidden">
+        </section>
+        <section id="all-card" class="grid grid-cols-1 gap-4">
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class=" companyName card-title text-[#002C5C] font-bold text-2xl">Mobile First Corp</h2>
+                            <p class="position opacity-80">React Native Developer</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">Remote</span> • <span class="type">Full-time</span> •
+                        <span class="salary">$130,000 - $175,000</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">Build cross-platform mobile applications using React Native. Work on products used
+                        by millions of
+                        users worldwide.</p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="companyName card-title text-[#002C5C] font-bold text-2xl">WebFlow Agency</h2>
+                            <p class="position opacity-80">Web Designer & Developer</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">Los Angeles, CA
+                        </span> • <span class="type">Part-time</span> •
+                        <span class="salary">$80,000 - $120,000</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">Create stunning web experiences for high-profile clients. Must have portfolio and
+                        experience with modern web design
+                        trends.</p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="companyName card-title text-[#002C5C] font-bold text-2xl">DataViz Solutions</h2>
+                            <p class="position opacity-80">Data Visualization Specialist</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">Boston, MA</span> • <span class="type">Full-time
+                        </span>
+                        •
+                        <span class="salary">$125,000 - $165,000</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">Transform complex data into compelling visualizations. Required skills: D3.js,
+                        React, and strong analytical thinking.
+                    </p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="companyName card-title text-[#002C5C] font-bold text-2xl">CloudFirst Inc</h2>
+                            <p class="position opacity-80">Backend Developer</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">Seattle, WA
+                        </span> • <span class="type">Full-time</span> •
+                        <span class="salary">$140,000 - $190,000</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">Design and maintain scalable backend systems using Python and AWS. Work with modern
+                        DevOps practices and cloud
+                        infrastructure.</p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="companyName card-title text-[#002C5C] font-bold text-2xl">Innovation Labs</h2>
+                            <p class="position opacity-80">UI/UX Engineer</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">Austin, TX
+                        </span> • <span class="type">Full-time</span> •
+                        <span class="salary">$110,000 - $150,000</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">Create beautiful and functional user interfaces for our suite of products. Strong
+                        design skills and frontend development
+                        expertise required.</p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="companyName card-title text-[#002C5C] font-bold text-2xl">MegaCorp Solutions</h2>
+                            <p class="position opacity-80">JavaScript Developer</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">New York, NY</span> • <span
+                            class="type">Full-time</span> •
+                        <span class="salary">$130,000 - $170,00</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">Build enterprise applications with JavaScript and modern frameworks. We offer
+                        competitive compensation, health
+                        insurance, and professional development opportunities.</p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="companyName card-title text-[#002C5C] font-bold text-2xl">StartupXYZ</h2>
+                            <p class="position opacity-80">Full Stack Engineer</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">Remote</span> • <span class="type">Full-time</span> •
+                        <span class="salary">$120,000 - $160,000</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">Join our fast-growing startup and work on our core platform. Experience with Node.js
+                        and React required. Great benefits
+                        and equity package included.</p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" card bg-base-100 card-md shadow-sm w-full">
+                <div class="card-body">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="companyName card-title text-[#002C5C] font-bold text-2xl">TechCorp Industries
+                            </h2>
+                            <p class="position opacity-80">Senior Frontend Developer</p>
+                        </div>
+                        <div
+                            class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <p class="opacity-80"><span class="location">San Francisco, CA</span> • <span
+                            class="type">Full-time</span> •
+                        <span class="salary">$130,000 - $175,000</span>
+                    </p>
+                    <br>
+                    <div>
+                        <div class="badge badge-lg bg-primary-content rounded-md py-5 description">Not Applied</div>
+                    </div>
+                    <p class="note">We are looking for an experienced Frontend Developer to build scalable web
+                        applications using React and TypeScript. You
+                        will work with a talented team on cutting-edge projects.</p>
+                    <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+
+
+
+
+<!-- 
+        <section id="empty" class="hidden">
+        </section> -->
+    <!-- </main>
+    <script>
+let interviewList = [];
+let rejectedList = [];
+let currentList = [];
+let currentStatus = 'all-btn';
+
+let total = document.getElementById("total");
+let interview = document.getElementById("interview");
+let rejected = document.getElementById("rejected");
+const allcards = document.getElementById("all-card");
+let jobcount = document.getElementById("job-count");
+
+const maincontainer = document.querySelector('main');
+function getStatusBadge(status) {
+    if (status === 'Interview') return '<div class="badge badge-success description rounded-md py-5 px-6 font-bold">Interview</div>';
+    if (status === 'Rejected') return '<div class="badge badge-error description rounded-md py-5 px-6 font-bold">Rejected</div>';
+    return '<div class="badge badge-md bg-primary-content rounded-md py-5 description">Not Applied</div>';
+}
+
+function updateJobCount() {
+    if (currentStatus === 'all-btn') {
+        jobcount.innerHTML = `<p><span>${allcards.children.length}</span> Jobs</p>`;
+    } else if (currentStatus === 'interview-btn') {
+        jobcount.innerHTML = `<p><span>${interviewList.length}</span> of ${allcards.children.length} Jobs</p>`;
+    } else if (currentStatus === 'rejected-btn') {
+        jobcount.innerHTML = `<p><span>${rejectedList.length}</span> of ${allcards.children.length} Jobs</p>`;
+    }
+}
+function updatecounts() {
+    total.innerText = allcards.children.length;
+    interview.innerText = interviewList.length;
+    rejected.innerText = rejectedList.length;
+    updateJobCount();
+}
+updatecounts();
+function toggleStyle(id) {
+    selected = document.getElementById(id);
+    currentStatus = id;
+    updateJobCount();
+    if (id == 'interview-btn') {
+        allcards.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        renderInterviewList();
+        if (interviewList.length == 0) {
+            filterSection.innerHTML = `
+                <div class="card bg-base-100 w-full shadow-sm">
+                <figure class="px-10 pt-10">
+                    <img src="jobs.png" alt="Shoes" class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title font-bold">No jobs available</h2>
+                    <p>Check back soon for new job opportunities</p>
+                </div>
+            </div>
+            `;
+        }
+    }
+    else if (id == 'all-btn') {
+        allcards.classList.remove('hidden');
+        filterSection.classList.add('hidden');
+    }
+    else if (id == 'rejected-btn') {
+        allcards.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+        renderRejectedList();
+        if (rejectedList.length == 0) {
+            filterSection.innerHTML = `
+                <div class="card bg-base-100 w-full shadow-sm">
+                <figure class="px-10 pt-10">
+                    <img src="jobs.png" alt="Shoes" class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title font-bold">No jobs available</h2>
+                    <p>Check back soon for new job opportunities</p>
+                </div>
+            </div>
+            `;
+        }
+    }
+}
+maincontainer.addEventListener('click', function (event) {
+    const deleteBtn = event.target.closest('.delete-button');
+    if (deleteBtn) {
+        const card = deleteBtn.closest('.card');
+        const companyName = card.querySelector('.companyName').innerText;
+        if (card.closest('#all-card')) {
+            interviewList = interviewList.filter(item => item.companyName !== companyName);
+            rejectedList = rejectedList.filter(item => item.companyName !== companyName);
+            card.remove();
+        } else {
+            if (currentStatus === 'interview-btn') {
+                interviewList = interviewList.filter(item => item.companyName !== companyName);
+                renderInterviewList();
+                if (interviewList.length === 0) {
+                    filterSection.innerHTML = `
+                        <div class="card bg-base-100 w-full shadow-sm">
+                        <figure class="px-10 pt-10">
+                            <img src="jobs.png" alt="Shoes" class="rounded-xl" />
+                        </figure>
+                        <div class="card-body items-center text-center">
+                            <h2 class="card-title font-bold">No jobs available</h2>
+                            <p>Check back soon for new job opportunities</p>
+                        </div>
+                    </div>`;
+                }
+            } else if (currentStatus === 'rejected-btn') {
+                rejectedList = rejectedList.filter(item => item.companyName !== companyName);
+                renderRejectedList();
+                if (rejectedList.length === 0) {
+                    filterSection.innerHTML = `
+                        <div class="card bg-base-100 w-full shadow-sm">
+                        <figure class="px-10 pt-10">
+                            <img src="jobs.png" alt="Shoes" class="rounded-xl" />
+                        </figure>
+                        <div class="card-body items-center text-center">
+                            <h2 class="card-title font-bold">No jobs available</h2>
+                            <p>Check back soon for new job opportunities</p>
+                        </div>
+                    </div>`;
+                }
+            }
+        }
+        updatecounts();
+        return;
+    }
+    if (event.target.classList.contains('inter-btn')) {
+        const parentNode = event.target.parentNode.parentNode;
+        const companyName = parentNode.querySelector('.companyName').innerText;
+        const position = parentNode.querySelector('.position').innerText;
+        const location = parentNode.querySelector('.location').innerText;
+        const type = parentNode.querySelector('.type').innerText;
+        const salary = parentNode.querySelector('.salary').innerText;
+        const status = parentNode.querySelector('.description').innerText;
+        const note = parentNode.querySelector('.note').innerText;
+        const cardInfo = {
+            companyName,
+            position,
+            location,
+            type,
+            salary,
+            status: 'Interview',
+            note
+        }
+        const companyExists = interviewList.find(item => item.companyName == cardInfo.companyName);
+        parentNode.querySelector('.description').outerHTML = getStatusBadge('Interview');
+        if (!companyExists) {
+            interviewList.push(cardInfo);
+        }
+        rejectedList = rejectedList.filter(item => item.companyName !== cardInfo.companyName);
+        updatecounts();
+        if (currentStatus == 'rejected-btn') {
+            renderRejectedList();
+            if (rejectedList.length == 0) {
+                filterSection.innerHTML = `
+                    <div class="card bg-base-100 w-full shadow-sm">
+                    <figure class="px-10 pt-10">
+                        <img src="jobs.png" alt="Shoes" class="rounded-xl" />
+                    </figure>
+                    <div class="card-body items-center text-center">
+                        <h2 class="card-title font-bold">No jobs available</h2>
+                        <p>Check back soon for new job opportunities</p>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    } -->
+
+
+
+
+    <!-- else if (event.target.classList.contains('reject-btn')) {
+        const parentNode = event.target.parentNode.parentNode;
+        const companyName = parentNode.querySelector('.companyName').innerText;
+        const position = parentNode.querySelector('.position').innerText;
+        const location = parentNode.querySelector('.location').innerText;
+        const type = parentNode.querySelector('.type').innerText;
+        const salary = parentNode.querySelector('.salary').innerText;
+        const status = parentNode.querySelector('.description').innerText;
+        const note = parentNode.querySelector('.note').innerText;
+        const cardInfo = {
+            companyName,
+            position,
+            location,
+            type,
+            salary,
+            status: 'Rejected',
+            note
+        }
+        const companyExists = rejectedList.find(item => item.companyName == cardInfo.companyName);
+        parentNode.querySelector('.description').outerHTML = getStatusBadge('Rejected');
+        if (!companyExists) {
+            rejectedList.push(cardInfo);
+        }
+        interviewList = interviewList.filter(item => item.companyName !== cardInfo.companyName);
+        updatecounts();
+        if (currentStatus == 'interview-btn') {
+            renderInterviewList();
+            if (interviewList.length == 0) {
+                filterSection.innerHTML = `
+                    <div class="card bg-base-100 w-full shadow-sm">
+                    <figure class="px-10 pt-10">
+                        <img src="jobs.png" alt="Shoes" class="rounded-xl" />
+                    </figure>
+                    <div class="card-body items-center text-center">
+                        <h2 class="card-title font-bold">No jobs available</h2>
+                        <p>Check back soon for new job opportunities</p>
+                    </div>
+                </div>
+                `;
+            }
+        }
+    }
+}); -->
+
+
+
+
+
+
+<!-- const filterSection = document.getElementById("filtered-section");
+function renderInterviewList() {
+    filterSection.innerHTML = '';
+    for (let inter of interviewList) {
+        let div = document.createElement("div");
+        div.className = "card bg-base-100 card-md shadow-sm w-full mb-5";
+        div.innerHTML = `
+            <div class="card-body">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="companyName card-title">${inter.companyName}</h2>
+                        <p class="position opacity-80">${inter.position}</p>
+                    </div>
+                    <div
+                        class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                </div>
+                <br>
+                <p class="opacity-80"><span class="location">${inter.location}</span> • <span class="type">${inter.type}</span> •
+                    <span class="salary">${inter.salary}</span>
+                </p>
+                <br>
+                <div>
+                    ${getStatusBadge(inter.status)}
+                </div>
+                <p class="note">${inter.note}</p>
+                <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+            </div>
+        `;
+        filterSection.appendChild(div);
+    }
+}
+function renderRejectedList() {
+    filterSection.innerHTML = '';
+    for (let rejec of rejectedList) {
+        let div = document.createElement("div");
+        div.className = "card bg-base-100 card-md shadow-sm w-full mb-5";
+        div.innerHTML = `
+            <div class="card-body">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="companyName card-title">${rejec.companyName}</h2>
+                        <p class="position opacity-80">${rejec.position}</p>
+                    </div>
+                    <div
+                        class="delete-button border border-neutral-content rounded-full p-2 opacity-80 cursor-pointer hover:text-red-600">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                </div>
+                <br>
+                <p class="opacity-80"><span class="location">${rejec.location}</span> • <span class="type">${rejec.type}</span> •
+                    <span class="salary">${rejec.salary}</span>
+                </p>
+                <br>
+                <div>
+                    ${getStatusBadge(rejec.status)}
+                </div>
+                <p class="note">${rejec.note}</p>
+                <div class="flex gap-2 mt-4">
+                        <button class="inter-btn btn btn-outline btn-success border-2 font-semibold">Interview</button>
+                        <button class="reject-btn btn btn-outline btn-error border-2 font-semibold">Rejected</button>
+                    </div>
+            </div>
+            
+        `;
+        filterSection.appendChild(div);
+    }
+}
+    </script> -->
+</body>
+</html>
